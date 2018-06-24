@@ -1,0 +1,6 @@
+#python3
+selenium==3.12.0
+PyMySql==0.8.1
+psutil
+requests
+python_anticaptcha

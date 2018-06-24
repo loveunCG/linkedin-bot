@@ -1,0 +1,5 @@
+
+CONNECT_REQ_N = 5
+REPLIED_N = 10 # replie
+TALKING_N = 12 # talking
+TALKING_REPLIED_N = 100

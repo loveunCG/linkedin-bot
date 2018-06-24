@@ -1,0 +1,16 @@
+login_query = "SELECT email, password FROM app_linkedinuser WHERE id=%s"
+getcontacts_query = """INSERT INTO messenger_inbox (company, industry, location, title, linkedin_id, name, latest_activity, status, is_connected, connected_date, owner_id) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"""
+# getmessages_query = "INSERT INTO messenger_chatmessage (created_at, update_at, text, time, type, replied_date, replied_other_date, campaign_id, contact_id) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s')"
+getmessages_query = """INSERT INTO messenger_chatmessage (created_at, update_at, text, time, type, contact_id, owner_id, is_direct, is_read, is_sent) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')"""
+bottask_update_query = "UPDATE app_bottask SET status=(%s), lastrun_date=(%s), completed_date=(%s) WHERE id=(%s) AND task_type=(%s) AND owner_id=(%s)"
+running_update_query = "UPDATE app_bottask SET status=(%s) WHERE id=(%s) AND task_type=(%s) AND owner_id=(%s)"
+search_keyword_query = """SELECT * FROM connector_search WHERE id=%s order by searchdate desc limit 1"""
+search_query = """INSERT INTO connector_searchresult (company, industry, location, title, linkedin_id, name,
+owner_id, search_id, status) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s')"""
+search_query_v2 = """INSERT INTO connector_searchresult (company, industry, location, title, linkedin_id, name, owner_id, search_id, status, first_name, last_name, countrycode) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')"""
+search_update_query = "UPDATE connector_search SET resultcount='%s' WHERE id=%s "
+get_membership_by_owner_id = """SELECT mp.* FROM app_membershiptype mp join app_linkedinuser_membership mt on(mp.id=mt.membership_id) where mt.linkedinuser_id ='%s' order by id desc limit 1"""
+inbox_update_query = """UPDATE messenger_inbox SET location='%s', industry='%s', countrycode='%s', company='%s', title='%s' WHERE id=%s"""
+get_linkedin_user = """SELECT * FROM app_linkedinuser"""
+
+inbox_check_id_query = """SELECT id FROM messenger_inbox WHERE linkedin_id=%s and owner_id=%s desc limit 1"""
